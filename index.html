@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mattia Scioni Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;700;800;900&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark;--bg:#0e0e10;--ink:#f2f0ee;--soft:#a9a7ad;--line:#2a2a2e;--card:#18181b;--red:#e30613;--pink:#f28ce6}
+:root[data-theme=light]{color-scheme:dark}
+:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;overflow-x:clip}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:"Inter Tight",Inter,sans-serif;letter-spacing:-.035em;line-height:1.02;margin:0;text-wrap:balance}
+.mono{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:14px;line-height:1.7}
+.band{padding-block:clamp(40px,6vw,88px);padding-left:max(4vw,16px);padding-right:max(4vw,16px)}
+.wrap{max-width:1320px;margin:0 auto}
+.hero{position:relative;background:var(--red);color:#fff;overflow:hidden;min-height:min(100svh,900px);display:grid;grid-template-rows:auto 1fr auto}
+.hero nav{display:flex;flex-wrap:wrap;justify-content:flex-end;align-items:center;gap:8px 24px;padding:24px max(4vw,16px);position:relative;z-index:3}
+.hero nav b{font-family:"Inter Tight";font-weight:800;font-size:19px;letter-spacing:-.02em}
+.hero nav div{display:flex;flex-wrap:wrap;gap:4px 28px;width:100%;justify-content:space-between}
+.hero nav a{text-decoration:none;font-weight:500;padding:6px 0}
+.hero nav a:hover,.hero nav a:focus-visible{text-decoration:underline;text-underline-offset:4px}
+.hero nav sup{font-size:11px;opacity:.8;margin-left:2px}
+.name{position:relative;z-index:1;margin:0;padding:0 0 0 max(1vw,8px);font-weight:900;font-size:clamp(84px,20.5vw,310px);line-height:.8;letter-spacing:-.075em;white-space:nowrap;align-self:end;margin-bottom:28px}
+.pins{position:absolute;right:4vw;bottom:96px;display:flex;align-items:flex-end;gap:clamp(8px,1vw,14px);z-index:2}
+.pins button{width:clamp(70px,7.5vw,112px);aspect-ratio:9/16}
+.pins button:nth-child(1){transform:rotate(-5deg)}
+.pins button:nth-child(2){transform:rotate(3deg) translateY(-14px)}
+.pins button:nth-child(3){transform:rotate(-2deg);aspect-ratio:4/5;width:clamp(84px,9vw,136px)}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 32px;padding:0 max(4vw,16px) 32px;position:relative;z-index:3}
+.foot p{margin:0;font-family:"Inter Tight";font-weight:500;font-size:clamp(22px,2.4vw,30px);letter-spacing:-.02em;line-height:1.2}
+.foot .mono{text-align:right}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:#fff;margin-right:8px;vertical-align:1px}
+button.work{all:unset;cursor:zoom-in;display:block;overflow:hidden;border-radius:6px;background:#000;position:relative;box-shadow:0 26px 50px -24px rgba(0,0,0,.55)}
+button.work img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+button.work:hover img{transform:scale(1.03)}
+button.work:focus-visible{outline:3px solid var(--pink);outline-offset:3px}
+.head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 32px;border-top:3px solid var(--ink);padding-top:16px;margin-bottom:28px}
+.head h2{font-size:clamp(40px,6vw,76px);font-weight:900;letter-spacing:-.05em}
+.head h2 sup{font-size:.3em;color:var(--red);vertical-align:top;margin-left:6px;letter-spacing:0}
+.head p{margin:0;color:var(--soft);max-width:48ch}
+.videos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.vid{text-decoration:none;display:flex;flex-direction:column;border-radius:8px;overflow:hidden;background:var(--card)}
+.vid .poster{aspect-ratio:16/10;position:relative;overflow:hidden;background:#000}
+.vid .poster img{width:100%;height:100%;object-fit:cover;opacity:.92}
+.vid .play{position:absolute;left:16px;bottom:16px;width:56px;height:56px;border-radius:50%;background:var(--red);display:grid;place-items:center;transition:transform .2s}
+.vid:hover .play,.vid:focus-visible .play{transform:scale(1.1)}
+.vid .play::after{content:"";border-left:16px solid #fff;border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:4px}
+.vid .txt{padding:16px 18px 20px}
+.vid h3{font-size:22px;font-weight:700}
+.vid p{margin:6px 0 0;font-size:15px;color:var(--soft)}
+.vid:focus-visible{outline:3px solid var(--pink);outline-offset:3px}
+.merc{position:absolute;inset:0;background:#0a0a14}
+.merc svg{width:100%;height:100%}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:18px}
+.item{display:flex;flex-direction:column;gap:10px}
+.item .work{box-shadow:none}
+.item h3{font-size:19px;font-weight:700}
+.item p{margin:2px 0 0;font-size:15px;color:var(--soft)}
+.c3{grid-column:span 3}.c4{grid-column:span 4}.c6{grid-column:span 6}
+.ratio-v{aspect-ratio:9/16}.ratio-p{aspect-ratio:5/7}.ratio-sq{aspect-ratio:9/8}
+.sub{margin:48px 0 18px;font-size:24px;font-weight:800}
+.redband{background:var(--red);color:#fff}
+.redband .head{border-color:#fff}
+.redband .head p{color:#fff;opacity:.85}
+.sg{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(10px,1.4vw,18px)}
+.sg button{aspect-ratio:9/16}
+.ai{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:28px 48px;align-items:center}
+.ai .shot{border-radius:10px;border:1px solid var(--line)}
+.ai ul{margin:16px 0 0;padding:0;list-style:none;display:grid;gap:12px}
+.ai li{padding-left:18px;position:relative}
+.ai li::before{content:"";position:absolute;left:0;top:.65em;width:8px;height:8px;border-radius:50%;background:var(--red)}
+.ai h3{font-size:28px;font-weight:800}
+.credits{display:grid;grid-template-columns:repeat(auto-fit,minmax(15em,1fr));gap:0 32px}
+.credits div{padding:18px 0;border-bottom:1px solid var(--line)}
+.credits b{display:block;font-family:"Inter Tight";font-size:20px;letter-spacing:-.02em}
+.credits span{color:var(--soft);font-size:15px}
+.tools{display:flex;flex-wrap:wrap;gap:10px}
+.tools span{background:var(--card);border-radius:6px;padding:10px 14px;font-weight:500}
+footer{background:var(--red);color:#fff;overflow:hidden}
+footer h2{font-size:clamp(64px,14vw,200px);font-weight:900;letter-spacing:-.07em;line-height:.85}
+footer .row{display:flex;flex-wrap:wrap;gap:12px 40px;margin-top:28px}
+footer a{font-weight:600;font-size:18px}
+dialog{border:0;padding:0;background:transparent;max-width:min(94vw,1100px);max-height:94vh}
+dialog::backdrop{background:rgba(8,8,10,.9)}
+dialog img{max-height:86vh;width:auto;margin:0 auto;border-radius:6px}
+dialog p{color:#fff;text-align:center;margin:12px 0 0;font-size:15px}
+dialog button{position:fixed;top:14px;right:16px;width:44px;height:44px;border-radius:50%;border:0;background:#fff;color:#111;font-size:22px;cursor:pointer}
+@media(max-width:900px){.c3{grid-column:span 6}.c4{grid-column:span 6}}
+.ep{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:28px 48px;align-items:center;margin-bottom:56px}
+.ep .pics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.ep .pics button{aspect-ratio:4/5;box-shadow:none}
+.panel{border-radius:14px;padding:clamp(18px,3vw,36px);margin-bottom:24px;display:grid;gap:clamp(10px,1.4vw,18px)}
+.panel.red{background:var(--red);color:#fff}
+.panel.pink{background:#e9c9cf;color:#2a1418}
+.ph{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:6px 24px;margin-bottom:6px}
+.ph h3{font-size:clamp(30px,4vw,48px);font-weight:900;letter-spacing:-.045em}
+.ph p{margin:0;font-family:"JetBrains Mono",monospace;font-size:14px}
+.brandrow{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:clamp(10px,1.4vw,18px)}
+.brandrow button{aspect-ratio:auto;height:clamp(220px,30vw,420px)}
+.row2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(10px,1.4vw,18px)}
+.row3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(10px,1.4vw,18px)}
+.row4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(10px,1.4vw,18px)}
+.panel button.work{box-shadow:none}
+button.work.logo{background:#fff;cursor:zoom-in}
+button.work.logo img{object-fit:contain;padding:12%}
+.panel.pink .row3 button{aspect-ratio:4/5}
+.ratio-p4{aspect-ratio:4/5}.ratio-a{aspect-ratio:1/1.414}
+.five{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px}
+@media(max-width:900px){.five{grid-template-columns:repeat(2,minmax(0,1fr))}.row4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.brandrow{grid-template-columns:minmax(0,1fr)}.row3{grid-template-columns:minmax(0,1fr)}.brandrow button{height:260px}}
+.ep h3{font-size:clamp(40px,5vw,64px);font-weight:900;letter-spacing:-.05em}
+.ep .by{font-family:"JetBrains Mono",monospace;font-size:14px;color:var(--soft);margin:8px 0 18px}
+.ep ol{margin:0 0 24px;padding:0;list-style:none;counter-reset:t;border-top:1px solid var(--line)}
+.ep li{counter-increment:t;display:flex;gap:14px;padding:10px 0;border-bottom:1px solid var(--line)}
+.ep li::before{content:counter(t,decimal-leading-zero);font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--soft);padding-top:3px}
+.ep li span{margin-left:auto;font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--soft)}
+.listen{display:inline-flex;align-items:center;gap:10px;background:var(--red);color:#fff;text-decoration:none;font-weight:600;padding:12px 20px;border-radius:999px;min-height:44px}
+.listen:hover,.listen:focus-visible{background:#b8000f}
+@media(max-width:1000px){.pins{display:none}}
+@media(max-width:820px){.hero{min-height:0}.ep{grid-template-columns:minmax(0,1fr)}.ai{grid-template-columns:minmax(0,1fr)}.videos{grid-template-columns:minmax(0,1fr)}.vid .poster{aspect-ratio:16/9}.foot .mono{text-align:left}}
+@media(max-width:600px){.sg{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px}.sg button{flex:0 0 62%;scroll-snap-align:start}.c4,.c6{grid-column:span 12}.grid .c3{grid-column:span 6}.hero nav div{gap:4px 18px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}button.work img,.vid .play{transition:none}}
+.audio{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,.7fr) minmax(0,1.3fr);gap:18px;align-items:stretch;margin-bottom:28px}
+.ep2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;align-items:end;background:var(--card);border-radius:10px;padding:14px}
+.ep2 .sq{aspect-ratio:1/1;box-shadow:none}
+.ep2 h3{font-size:clamp(28px,2.7vw,42px);font-weight:900;letter-spacing:-.05em;white-space:nowrap}
+.ep2 .by{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--soft);margin:8px 0 18px}
+.acard{display:flex;flex-direction:column;gap:10px;background:var(--card);border-radius:10px;padding:14px}
+.acard .work{flex:1;min-height:220px;box-shadow:none}
+.acard.wide .work{flex:none;min-height:0;aspect-ratio:16/9}
+.acard.wide .work img{object-fit:contain}
+.acard b{display:block;font-family:"Inter Tight";font-size:19px;letter-spacing:-.02em}
+.acard span{color:var(--soft);font-size:15px}
+.videos2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-bottom:8px}
+.videos2 .poster{aspect-ratio:16/9}
+.merc2{background:#efe6d3 !important}
+.merc2 img{object-fit:contain !important;opacity:1 !important}
+.gal{margin-top:28px}
+.galhead{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px}
+.galhead .sub{margin:0}
+.galhead h4{margin:0;font-family:"Inter Tight";font-size:20px;font-weight:800;letter-spacing:-.02em}
+.arrows{display:flex;gap:8px}
+.arrows button{width:44px;height:44px;border-radius:50%;border:1.5px solid currentColor;background:transparent;color:inherit;font-size:18px;cursor:pointer}
+.arrows button:hover,.arrows button:focus-visible{background:rgba(255,255,255,.16);outline:none}
+.arrows button:disabled{opacity:.3;cursor:default}
+.track{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding-bottom:10px;scrollbar-width:thin}
+.track>*{flex:0 0 auto;scroll-snap-align:start;margin:0}
+.track.posters>*{width:clamp(220px,30%,400px)}
+.track.posters .work{aspect-ratio:4/5}
+.track.stories>*{width:clamp(150px,19%,250px)}
+.track.stories .work{aspect-ratio:9/16}
+.track.others>*{width:clamp(200px,24%,320px)}
+.track.others .work{aspect-ratio:5/7}
+.track .cap{font-size:14px;margin-top:8px;opacity:.85}
+.reels figure{width:clamp(170px,22%,280px)}
+.reels video{width:100%;aspect-ratio:9/16;border-radius:8px;background:#000;display:block;object-fit:cover}
+.reels figcaption{margin-top:10px}
+.reels figcaption b{display:block;font-family:"Inter Tight";font-size:18px;letter-spacing:-.02em}
+.reels figcaption span{color:var(--soft);font-size:14px}
+.sgp,.ssp{position:relative}
+.sgp{margin-top:130px}
+.germ{position:absolute;right:-24px;top:-150px;width:clamp(170px,22vw,300px);transform:rotate(18deg);pointer-events:none;animation:float 6s ease-in-out infinite;filter:drop-shadow(0 18px 24px rgba(0,0,0,.35));z-index:2}
+.sgp .ph{position:relative;padding-right:min(24vw,320px)}
+.sslogo{position:absolute;right:30px;top:18px;width:clamp(140px,18vw,240px);transform:rotate(-8deg)}
+.ssp .ph{padding-right:min(22vw,260px)}
+@keyframes float{0%,100%{transform:rotate(18deg) translateY(0)}50%{transform:rotate(12deg) translateY(14px)}}
+.panel .arrows button{color:inherit}
+@media(max-width:900px){.audio{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.ep2{grid-column:span 2}}
+@media(max-width:600px){.audio{grid-template-columns:minmax(0,1fr)}.ep2{grid-column:auto;grid-template-columns:minmax(0,1fr)}.videos2{grid-template-columns:minmax(0,1fr)}.track.posters>*{width:72%}.track.stories>*{width:48%}.track.others>*{width:62%}.reels figure{width:58%}.germ{width:150px;right:-8px;top:-70px}.sgp .ph{padding-right:120px}.sslogo{width:110px;right:12px}.ssp .ph{padding-right:110px}}
+@media(prefers-reduced-motion:reduce){.germ{animation:none}.track{scroll-behavior:auto}}
+
+body{position:relative}
+.nl{text-decoration:none;color:inherit}
+.nl:hover b,.nl:hover,.nl:focus-visible{text-decoration:underline;text-underline-offset:4px}
+.arr{font-size:.6em;vertical-align:.25em;opacity:.8}
+.acard.areel video{width:100%;aspect-ratio:9/16;border-radius:6px;background:#000;object-fit:cover;flex:1;min-height:0}
+.acard.areel{margin:0}
+.audio{grid-template-columns:minmax(0,1.45fr) minmax(0,.7fr) minmax(0,1.25fr) minmax(0,.62fr)}
+.sgcred{display:flex;gap:14px;align-items:center}
+.g{display:block}
+.panel,.vid,.acard,.ep2,.reels figure,.credits,.ai,.track{position:relative;z-index:5}
+.germ{animation:float2 7s ease-in-out infinite !important}
+@keyframes float2{0%{transform:rotate(18deg) translate(0,0)}25%{transform:rotate(4deg) translate(-26px,18px)}50%{transform:rotate(26deg) translate(-8px,34px)}75%{transform:rotate(10deg) translate(18px,12px)}100%{transform:rotate(18deg) translate(0,0)}}
+.panel.blue{background:#0a3cc8;color:#fff}
+.panel.blue .ph p{color:#ffe14a}
+@media(max-width:900px){.audio{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+@media(prefers-reduced-motion:reduce){.germ{animation:none !important}}
+.tools2{margin-top:8px !important;font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--soft)}
+.head>div{max-width:52ch}
+.head>div p{margin:0}
+.track.posters>*,.track.others>*{width:auto}
+.track.posters .work,.track.others .work{aspect-ratio:auto;height:clamp(300px,34vw,470px)}
+.track.posters .work img,.track.others .work img{height:100%;width:auto;max-width:none;object-fit:contain}
+.contacts{display:grid;grid-template-columns:repeat(auto-fit,minmax(16em,1fr));gap:20px 40px;margin-top:32px}
+.contacts .lbl{display:block;font-family:"JetBrains Mono",monospace;font-size:13px;opacity:.8;margin-bottom:4px}
+.contacts a,.contacts span:not(.lbl){font-family:"Inter Tight";font-weight:700;font-size:clamp(18px,1.8vw,24px);letter-spacing:-.02em;overflow-wrap:anywhere}
+.contacts a{color:#fff}
+@media(max-width:600px){.track.posters .work,.track.others .work{height:300px}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="germ" viewBox="0 0 120 100"><g stroke="currentColor" stroke-width="7" stroke-linecap="round"><line x1="60" y1="60" x2="60" y2="14"/><line x1="60" y1="60" x2="24" y2="26"/><line x1="60" y1="60" x2="96" y2="26"/><line x1="60" y1="64" x2="12" y2="66"/><line x1="60" y1="64" x2="108" y2="66"/></g><g fill="currentColor"><circle cx="60" cy="12" r="10"/><circle cx="22" cy="24" r="10"/><circle cx="98" cy="24" r="10"/><circle cx="10" cy="66" r="10"/><circle cx="110" cy="66" r="10"/><circle cx="60" cy="68" r="27"/></g><g stroke="var(--eye,#7bd53b)" stroke-width="6" stroke-linecap="square"><line x1="44" y1="58" x2="54" y2="68"/><line x1="76" y1="58" x2="66" y2="68"/></g></symbol></defs></svg>
+
+<header class="hero">
+  <nav aria-label="Sezioni">
+    <div><a href="#audio">Audio</a><a href="#video">Video<sup>5</sup></a><a href="#grafica">Graphic design</a><a href="#contatti">Contatti</a></div>
+  </nav>
+  <h1 class="name">MATTIA<br>SCIONI</h1>
+  <div class="foot">
+    <p>Video, grafica e sound design.</p>
+    <div class="mono">Cagliari, Sardegna<br><span class="dot"></span>Disponibile per nuovi progetti</div>
+  </div>
+</header>
+
+<section class="band" id="audio"><div class="wrap">
+  <div class="head"><h2>Audio</h2><div><p>Multistrumentista, produzione musicale, mix e sound design.</p><p class="tools2">Ableton Live · Max</p></div></div>
+  <div class="audio">
+    <div class="ep2">
+      <button class="work sq" data-src="img/disco.jpg" data-cap="seaniii, 01:00 EP"><img src="img/disco.jpg" alt="Mattia con una palla da discoteca, luce rosa" loading="lazy"></button>
+      <div>
+        <h3>01:00 EP</h3>
+        <div class="by">seaniii · EP · 6 brani</div>
+        <a class="listen" href="https://www.youtube.com/watch?v=M-FNW6ANmMQ&amp;list=OLAK5uy_mV-iVtoMgXJ8nSvIiPTZJffy5WOdmb-kU" target="_blank" rel="noopener">Ascolta su YouTube</a>
+      </div>
+    </div>
+    <div class="acard">
+      <button class="work" data-src="img/mercurio.jpg" data-cap="Mercurio retrogrado, locandina"><img src="img/mercurio.jpg" alt="Locandina di Mercurio retrogrado" loading="lazy"></button>
+      <div><a class="nl" href="https://youtu.be/7Mp-2tn-yeM?si=U__aqZAbotEZKzve" target="_blank" rel="noopener"><b>Mercurio retrogrado</b></a><span>Colonna sonora</span></div>
+    </div>
+    <div class="acard wide">
+      <button class="work" data-src="img/speedrun_processo.jpg" data-cap="SpeedRun, il processo creativo alla portata di tutti"><img src="img/speedrun_processo.jpg" alt="Cartello iniziale di SpeedRun" loading="lazy"></button>
+      <div><a class="nl" href="https://youtu.be/IHM9mP5ODEg?si=s5swq1CRYckqK4fO" target="_blank" rel="noopener"><b>SpeedRun</b></a><span>Sigla, beat e jingle</span></div>
+    </div>
+    <figure class="acard areel"><video src="vid/reel2.mp4" poster="vid/reel2.jpg" controls playsinline preload="none"></video><div><b>Space Jam, promo</b><span>Musica e sound FX</span></div></figure>
+  </div>
+  <div class="credits">
+    <div class="sgcred"><div><a class="nl" href="https://www.instagram.com/space_germs/" target="_blank" rel="noopener"><b>Space Germs</b></a><span>Tastierista resident, organizzatore e sound designer</span></div></div>
+    <div><b>Realtà Aumentata</b><span>Teedoo, album. Sound design e produzione</span></div>
+  </div>
+</div></section>
+
+<section class="band" id="video" style="padding-top:0"><div class="wrap">
+  <div class="head"><h2>Video<sup>5</sup></h2><div><p>Montaggio, animazioni, effetti e musica.</p><p class="tools2">Premiere Pro · After Effects · Cavalry · Edits · CapCut</p></div></div>
+  <div class="videos2">
+    <a class="vid" href="https://youtu.be/IHM9mP5ODEg?si=s5swq1CRYckqK4fO" target="_blank" rel="noopener">
+      <div class="poster"><img src="img/speedrun_ep9.jpg" alt=""><span class="play" aria-hidden="true"></span></div>
+      <div class="txt"><h3>SpeedRun</h3><p>Programma radio e YouTube. Conduzione, regia, montaggio audio e video. Si apre su YouTube.</p></div>
+    </a>
+    <a class="vid" href="https://youtu.be/7Mp-2tn-yeM?si=U__aqZAbotEZKzve" target="_blank" rel="noopener">
+      <div class="poster merc2"><img src="img/mercurio.jpg" alt=""><span class="play" aria-hidden="true"></span></div>
+      <div class="txt"><h3>Mercurio retrogrado</h3><p>Colonna sonora originale: composizione, produzione e mix. Si apre su YouTube.</p></div>
+    </a>
+  </div>
+  <div class="gal" data-gal>
+    <div class="galhead"><h3 class="sub">Reel</h3><div class="arrows"><button type="button" class="prev" aria-label="Precedente">←</button><button type="button" class="next" aria-label="Successivo">→</button></div></div>
+    <div class="track reels">
+      <figure><video src="vid/reel4.mp4" poster="vid/reel4.jpg" controls playsinline preload="none"></video><figcaption><b>Space Jam, round two</b><span>Animazioni, effetti e musica in After Effects</span></figcaption></figure>
+      <figure><video src="vid/reel3.mp4" poster="vid/reel3.jpg" controls playsinline preload="none"></video><figcaption><b>Promo singolo</b><span>Montaggio, animazioni, effetti e musica</span></figcaption></figure>
+      <figure><video src="vid/reel1.mp4" poster="vid/reel1.jpg" controls playsinline preload="none"></video><figcaption><b>Reel in stile videogioco</b><span>Animazioni, effetti, sound design e musica</span></figcaption></figure>
+    </div>
+  </div>
+</div></section>
+
+<section class="band" id="grafica" style="padding-top:0"><div class="wrap">
+  <div class="head"><h2>Graphic design</h2><div><p>Logo, brand identity, locandine e poster. Scorri le gallerie per vederne di più.</p><p class="tools2">Illustrator · Photoshop · Affinity · Canva</p></div></div>
+
+  <div class="panel red sgp">
+    <img class="germ" src="img/germ.png" alt="" aria-hidden="true">
+    <div class="ph"><h3><a class="nl" href="https://www.instagram.com/space_germs/" target="_blank" rel="noopener">Space Germs <span class="arr">↗</span></a></h3><p>Logo design, brand identity, locandine e storie social</p></div>
+    <div class="gal" data-gal>
+      <div class="galhead"><h4>Locandine</h4><div class="arrows"><button type="button" class="prev" aria-label="Precedente">←</button><button type="button" class="next" aria-label="Successivo">→</button></div></div>
+      <div class="track posters" id="g-sgposters"></div>
+    </div>
+    <div class="gal" data-gal>
+      <div class="galhead"><h4>Stories</h4><div class="arrows"><button type="button" class="prev" aria-label="Precedente">←</button><button type="button" class="next" aria-label="Successivo">→</button></div></div>
+      <div class="track stories" id="g-sgstories"></div>
+    </div>
+  </div>
+
+  <div class="panel pink ssp">
+    <img class="sslogo" src="img/ss_logo.png" alt="Logo SottoSuolo Fest">
+    <div class="ph"><h3><a class="nl" href="https://www.instagram.com/sottosuolofest/" target="_blank" rel="noopener">SottoSuolo Fest <span class="arr">↗</span></a></h3><p>Logo design, brand identity e locandine</p></div>
+    <div class="gal" data-gal>
+      <div class="galhead"><h4>Locandine, illustrazioni e artisti</h4><div class="arrows"><button type="button" class="prev" aria-label="Precedente">←</button><button type="button" class="next" aria-label="Successivo">→</button></div></div>
+      <div class="track posters" id="g-ss"></div>
+    </div>
+  </div>
+
+  <div class="panel blue aycp">
+    <div class="ph"><h3>All You Can Swing</h3><p>Brand identity, locandine e storie social per la jazz jam</p></div>
+    <div class="gal" data-gal>
+      <div class="galhead"><h4>Locandine e storie</h4><div class="arrows"><button type="button" class="prev" aria-label="Precedente">←</button><button type="button" class="next" aria-label="Successivo">→</button></div></div>
+      <div class="track posters" id="g-aycs"></div>
+    </div>
+  </div>
+
+  <div class="gal" data-gal>
+    <div class="galhead"><h3 class="sub">Poster e altri lavori</h3><div class="arrows"><button type="button" class="prev" aria-label="Precedente">←</button><button type="button" class="next" aria-label="Successivo">→</button></div></div>
+    <div class="track others" id="g-others"></div>
+  </div>
+</div></section>
+
+<section class="band" id="ai" style="background:var(--card)"><div class="wrap">
+  <div class="head"><h2>Progetti con l'AI</h2><div><p>Software progettato e scritto con Claude Code e altri strumenti di intelligenza artificiale.</p><p class="tools2">Claude Code · Flutter · Supabase</p></div></div>
+  <div class="ai">
+    <button class="work shot" data-src="img/app.jpg" data-cap="App gestionale, vista percorso"><img src="img/app.jpg" alt="Schermata dell'app gestionale con il percorso NG Suite diviso in fasi, progetti e boss"></button>
+    <div>
+      <h3>App gestionale per obiettivi</h3>
+      <ul>
+        <li>App Flutter per Mac e Android, con sincronizzazione su Supabase e promemoria su Telegram.</li>
+        <li>Gestisce percorsi, progetti, routine e task, con boss e premi.</li>
+        <li>Progettata e scritta con Claude Code.</li>
+        <li><b>NG Suite</b>, in sviluppo: strumenti audio-video basati su Ableton Live e Max.</li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+<footer class="band" id="contatti"><div class="wrap">
+  <h2>Contatti</h2>
+  <div class="contacts">
+    <div><span class="lbl">Telefono</span><a href="tel:+393920224926">392 022 4926</a></div>
+    <div><span class="lbl">Email</span><a href="mailto:mattia.scioni.123@gmail.com">mattia.scioni.123@gmail.com</a></div>
+    <div><span class="lbl">Instagram, musica</span><a href="https://www.instagram.com/it_s_seaniii/" target="_blank" rel="noopener">@it_s_seaniii</a></div>
+    <div><span class="lbl">Instagram, grafica</span><a href="https://www.instagram.com/piu._.meno/" target="_blank" rel="noopener">@piu._.meno</a></div>
+    <div><span class="lbl">LinkedIn</span><a href="https://www.linkedin.com/in/mattiascioni/" target="_blank" rel="noopener">mattiascioni</a></div>
+    <div><span class="lbl">Base</span><span>Cagliari, Sardegna · italiano e inglese</span></div>
+  </div>
+</div></footer>
+
+<dialog id="lb" aria-label="Immagine ingrandita"><button type="button" id="lbx" aria-label="Chiudi">×</button><img id="lbi" alt=""><p id="lbc"></p></dialog>
+
+<script>
+{
+const btn=(src,cap,cls='',eager=false)=>`<button class="work ${cls}" data-src="${src}" data-cap="${cap}"><img src="${src}" alt="${cap}" loading="${eager?'eager':'lazy'}"></button>`;
+
+const card=w=>`<div class="item ${w.c}">${btn(w.src,w.t,w.r)}<div><h3>${w.t}</h3><p>${w.d}</p></div></div>`;
+const fill=(id,list,cap)=>{const el=document.getElementById(id); if(!el) return; el.innerHTML=list.map(([s,c])=>`<div>${btn(s,c)}${cap?`<div class="cap">${c}</div>`:''}</div>`).join('');};
+fill('g-sgposters',[['img/sg_poster5.jpg','Locandina, 10 settembre'],['img/sg_poster2.jpg','Locandina, feat. Verano'],['img/sg_poster4.jpg','Locandina, 7 novembre'],['img/sg_poster1.jpg','Locandina, 12 settembre'],['img/sg_poster3.jpg','Locandina, 27 giugno']]);
+fill('g-sgstories',[1,2,3,4].map(n=>[`img/sg${n}.jpg`,`Storia ${n} di 4`]).concat([['img/sglinee1.jpg','Storia, linee'],['img/sglinee2.jpg','Storia, linee']]));
+fill('g-ss',[['img/sottosuolo.jpg','Locandina con line-up'],['img/ss_ill2.jpg','Illustrazione a colori'],['img/ss_ill1.jpg','Illustrazione, tratto'],['img/ss_seaniii.jpg','Card artista, seaniii'],['img/ss_live.jpg','Card artista, live'],['img/ss_brand.jpg','Logo su fondo rosa']]);
+fill('g-aycs',[['img/aycs_piano.jpg','Locandina, opening 29 maggio'],['img/aycs.jpg','Locandina, 29 maggio'],['img/aycs2.jpg','Locandina, 5 giugno'],['img/aycs_info.jpg','Storia, info serata'],['img/aycs_menu.jpg','Storia, menù']]);
+fill('g-others',[['img/p_accade.jpg','Esiste solo ciò che accade, poster'],['img/p_come.jpg','Come stai?, poster'],['img/p_illustro.jpg','Poster astratto'],['img/graphicnovel.jpg','Non nebbia, nuvole, tavola di graphic novel'],['img/align_card.jpg','Align, biglietto da visita']],true);
+for(const g of document.querySelectorAll('[data-gal]')){
+  const t=g.querySelector('.track'),pv=g.querySelector('.prev'),nx=g.querySelector('.next');
+  const step=()=>{const f=t.firstElementChild;return f?f.getBoundingClientRect().width+16:300};
+  const upd=()=>{pv.disabled=t.scrollLeft<4;nx.disabled=t.scrollLeft+t.clientWidth>=t.scrollWidth-4;};
+  pv.addEventListener('click',()=>t.scrollBy({left:-step(),behavior:'smooth'}));
+  nx.addEventListener('click',()=>t.scrollBy({left:step(),behavior:'smooth'}));
+  t.addEventListener('scroll',upd,{passive:true}); new ResizeObserver(upd).observe(t); upd();
+}
+const lb=document.getElementById('lb'),lbi=document.getElementById('lbi'),lbc=document.getElementById('lbc');
+document.addEventListener('click',e=>{
+  const b=e.target.closest('button.work');
+  if(b){lbi.src=b.dataset.src;lbi.alt=b.dataset.cap;lbc.textContent=b.dataset.cap;try{lb.showModal()}catch(err){lb.setAttribute('open','')}return}
+  if(e.target===lb||e.target.id==='lbx'){lb.close?lb.close():lb.removeAttribute('open')}
+});
+
+
+}
+</script>
+</body>
+</html>
