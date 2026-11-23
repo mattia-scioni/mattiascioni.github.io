@@ -203,6 +203,23 @@ body{position:relative}
 .contacts a,.contacts span:not(.lbl){font-family:"Inter Tight";font-weight:700;font-size:clamp(18px,1.8vw,24px);letter-spacing:-.02em;overflow-wrap:anywhere}
 .contacts a{color:#fff}
 @media(max-width:600px){.track.posters .work,.track.others .work{height:300px}}
+
+/* audio v3 */
+.ep3{display:grid;grid-template-columns:clamp(200px,32vw,400px) minmax(0,1fr);gap:20px 40px;align-items:end;margin-bottom:48px}
+.ep3 .work{aspect-ratio:1/1;box-shadow:none}
+.ep3 .work img{width:100%;height:100%;object-fit:cover}
+.ep3 h3{font-size:clamp(44px,6vw,84px);font-weight:900;letter-spacing:-.05em;line-height:.95}
+.ep3 .by{font-family:"JetBrains Mono",monospace;font-size:14px;color:var(--soft);margin:12px 0 22px}
+.arow{display:flex;gap:18px;align-items:flex-start;margin-bottom:48px}
+.arow figure{margin:0;flex:var(--r) 1 0;min-width:0;position:relative;z-index:5}
+.arow .work,.arow video{display:block;width:100%;aspect-ratio:var(--r);border-radius:6px;box-shadow:none;background:#000}
+.arow .work img{width:100%;height:100%;object-fit:cover}
+.arow video{object-fit:cover}
+.arow figcaption{margin-top:12px}
+.arow b,.acred b{display:block;font-family:"Inter Tight";font-size:19px;letter-spacing:-.02em}
+.arow span,.acred span{color:var(--soft);font-size:15px}
+.acred{display:grid;grid-template-columns:repeat(auto-fit,minmax(16em,1fr));gap:18px 32px;border-top:1px solid var(--line);padding-top:20px;position:relative;z-index:5}
+@media(max-width:700px){.ep3{grid-template-columns:minmax(0,1fr)}.arow{flex-wrap:wrap}.arow figure.wide{order:-1;flex-basis:100%}.arow figure{flex-basis:35%}}
 </style>
 </head>
 <body>
@@ -282,27 +299,21 @@ body{position:relative}
 
 <section class="band" id="audio" style="padding-top:0"><div class="wrap">
   <div class="head"><h2>Audio</h2><div><p>Multistrumentista, produzione musicale, mix e sound design.</p><p class="tools2">Ableton Live · Max</p></div></div>
-  <div class="audio">
-    <div class="ep2">
-      <button class="work sq" data-src="img/disco.jpg" data-cap="seaniii, 01:00 EP"><img src="img/disco.jpg" alt="Mattia con una palla da discoteca, luce rosa" loading="lazy"></button>
-      <div>
-        <h3>01:00 EP</h3>
-        <div class="by">seaniii · EP · 6 brani</div>
-        <a class="listen" href="https://www.youtube.com/watch?v=M-FNW6ANmMQ&amp;list=OLAK5uy_mV-iVtoMgXJ8nSvIiPTZJffy5WOdmb-kU" target="_blank" rel="noopener">Ascolta su YouTube</a>
-      </div>
+  <div class="ep3">
+    <button class="work" data-src="img/disco.jpg" data-cap="seaniii, 01:00 EP"><img src="img/disco.jpg" alt="Mattia con una palla da discoteca, luce rosa" loading="lazy"></button>
+    <div>
+      <h3>01:00 EP</h3>
+      <div class="by">seaniii · EP · 6 brani</div>
+      <a class="listen" href="https://www.youtube.com/watch?v=M-FNW6ANmMQ&amp;list=OLAK5uy_mV-iVtoMgXJ8nSvIiPTZJffy5WOdmb-kU" target="_blank" rel="noopener">Ascolta su YouTube</a>
     </div>
-    <div class="acard">
-      <button class="work" data-src="img/mercurio.jpg" data-cap="Mercurio retrogrado, locandina"><img src="img/mercurio.jpg" alt="Locandina di Mercurio retrogrado" loading="lazy"></button>
-      <div><a class="nl" href="https://youtu.be/7Mp-2tn-yeM?si=U__aqZAbotEZKzve" target="_blank" rel="noopener"><b>Mercurio retrogrado</b></a><span>Colonna sonora</span></div>
-    </div>
-    <div class="acard wide">
-      <button class="work" data-src="img/speedrun_processo.jpg" data-cap="SpeedRun, il processo creativo alla portata di tutti"><img src="img/speedrun_processo.jpg" alt="Cartello iniziale di SpeedRun" loading="lazy"></button>
-      <div><a class="nl" href="https://youtu.be/IHM9mP5ODEg?si=s5swq1CRYckqK4fO" target="_blank" rel="noopener"><b>SpeedRun</b></a><span>Sigla, beat e jingle</span></div>
-    </div>
-    <figure class="acard areel"><video src="vid/reel2.mp4" poster="vid/reel2.jpg" controls playsinline preload="none"></video><div><b>Space Jam, promo</b><span>Musica e sound FX</span></div></figure>
   </div>
-  <div class="credits">
-    <div class="sgcred"><div><a class="nl" href="https://www.instagram.com/space_germs/" target="_blank" rel="noopener"><b>Space Germs</b></a><span>Tastierista resident, organizzatore e sound designer</span></div></div>
+  <div class="arow">
+    <figure style="--r:.6667"><button class="work" data-src="img/mercurio.jpg" data-cap="Mercurio retrogrado, locandina"><img src="img/mercurio.jpg" alt="Locandina di Mercurio retrogrado" loading="lazy"></button><figcaption><a class="nl" href="https://youtu.be/7Mp-2tn-yeM?si=U__aqZAbotEZKzve" target="_blank" rel="noopener"><b>Mercurio retrogrado</b></a><span>Colonna sonora</span></figcaption></figure>
+    <figure class="wide" style="--r:1.7766"><button class="work" data-src="img/speedrun_processo.jpg" data-cap="SpeedRun, il processo creativo alla portata di tutti"><img src="img/speedrun_processo.jpg" alt="Cartello iniziale di SpeedRun" loading="lazy"></button><figcaption><a class="nl" href="https://youtu.be/IHM9mP5ODEg?si=s5swq1CRYckqK4fO" target="_blank" rel="noopener"><b>SpeedRun</b></a><span>Sigla, beat e jingle</span></figcaption></figure>
+    <figure style="--r:.5625"><video src="vid/reel2.mp4" poster="vid/reel2.jpg" controls playsinline preload="none"></video><figcaption><b>Space Jam, promo</b><span>Musica e sound FX</span></figcaption></figure>
+  </div>
+  <div class="acred">
+    <div><a class="nl" href="https://www.instagram.com/space_germs/" target="_blank" rel="noopener"><b>Space Germs</b></a><span>Tastierista resident, organizzatore e sound designer</span></div>
     <div><b>Realtà Aumentata</b><span>Teedoo, album. Sound design e produzione</span></div>
   </div>
 </div></section>
